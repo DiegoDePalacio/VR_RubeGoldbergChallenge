@@ -59,19 +59,17 @@ namespace VirtualReality.Vive
                 }
             }
 
-            if ( device.GetTouchUp( SteamVR_Controller.ButtonMask.Touchpad ) )
+            if ( device.GetPressUp( SteamVR_Controller.ButtonMask.Touchpad ) )
             {
+                carouselCaster.Select();
+
+                // TODO: Separate the cancel functionality to not force the player to choose some option if the menu is open
                 swipeSum = 0f;
                 touchLast = 0f;
                 touchCurrent = 0f;
                 hasSwipedLeft = false;
                 hasSwipedRight = false;
                 carouselCaster.SetCarouselActive( false );
-            }
-
-            if ( device.GetPressDown( SteamVR_Controller.ButtonMask.Touchpad ) )
-            {
-                carouselCaster.Select();
             }
         }
     }
